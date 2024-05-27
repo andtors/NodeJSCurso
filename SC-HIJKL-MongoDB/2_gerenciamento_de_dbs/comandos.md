@@ -28,11 +28,9 @@ db.pessoas.insertOne({nome: "Matheus", idade: 30})
 
 db.enderecos.insertOne({rua: "Rua teste", numero: "123c"})
 
-mongodump -d meuBanco -o meuBanco
-
 # 4 - importar arquivos do mongodump
 
-
+mongodump -d meuBanco -o meuBanco
 
 # 5 - tarefa 1
 
@@ -49,3 +47,9 @@ db.dados.find({})
 mongoexport -c dados -d novoBanco -o novoBanco.json
 
 mongoimport novoBanco.json -d novoBancoDois -c novosdados
+
+Mongo().getDBNames().forEach(function(db) {
+    if(['admin', 'config', 'local'].indexOf(db) < 0){
+        Mongo().getDB(db).dropDatabase()
+    }
+})
