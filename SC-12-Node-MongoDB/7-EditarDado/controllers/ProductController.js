@@ -1,18 +1,18 @@
 const Product = require('../models/Product')
 
 module.exports = class ProductsController {
-    static async showProducts(req, res){
+    static async showProducts(req, res) {
 
-       const products = await Product.getProducts()
+        const products = await Product.getProducts()
 
-        res.render('products/all', {products})
+        res.render('products/all', { products })
     }
 
-    static createProduct(req, res){
+    static createProduct(req, res) {
         res.render('products/create')
     }
 
-    static createProductPost(req, res){
+    static createProductPost(req, res) {
 
         const name = req.body.name
         const image = req.body.image
@@ -26,16 +26,16 @@ module.exports = class ProductsController {
         res.redirect('/products')
     }
 
-    static async getProduct(req, res){
+    static async getProduct(req, res) {
 
         const id = req.params.id
 
         const product = await Product.getProductById(id)
 
-        res.render('products/product', {product})
+        res.render('products/product', { product })
     }
 
-    static async removeProduct(req, res){
+    static async removeProduct(req, res) {
 
         const id = req.params.id
 
@@ -44,32 +44,32 @@ module.exports = class ProductsController {
         res.redirect('/products')
     }
 
-    static async editProduct(req, res){
+    static async editProduct(req, res) {
         const id = req.params.id
 
         const product = await Product.getProductById(id)
 
-        res.render('products/edit', {product})
+        res.render('products/edit', { product })
     }
 
-    static async editProductPost(req, res){
-        
+    static async editProductPost(req, res) {
+
         const id = req.body.id
         const name = req.body.name
         const image = req.body.image
         const price = req.body.price
         const description = req.body.description
 
-/*
-        meu metodo passando item por item
-        await Product.editProductById(id, name, image, price, description)
-*/
+        /*
+                meu metodo passando item por item
+                await Product.editProductById(id, name, image, price, description)
+        */
 
         // metodo com objeto
         const product = new Product(name, image, price, description)
 
         await product.updateProduct(id)
-        
+
         res.redirect('/products')
     }
 }
