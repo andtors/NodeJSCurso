@@ -126,7 +126,7 @@ module.exports = class UserController{
             currentUser = null
         }
 
-        res.status(200).send(currentUser)
+       res.status(201).send(currentUser)
     }
 
     static async getUserById(req, res) {
