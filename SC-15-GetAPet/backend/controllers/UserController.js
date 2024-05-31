@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const path = require('path')
 
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
@@ -157,8 +158,11 @@ module.exports = class UserController{
 
         const {name, email, phone, password, confirmPassword} = req.body
 
-        if(req.file){
-           user.image = req.file.filename
+        if(req.file.extname === 'png' || 'jpg'){
+            user.image = req.file.filename
+        } else {
+            res.status(422).json({message: 'Tipo de arquivo inválido! Apenas jpg, jpeg e png são aceitos!'})
+            return
         }
 
          // validations
