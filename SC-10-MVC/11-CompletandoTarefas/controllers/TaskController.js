@@ -1,3 +1,4 @@
+const { raw } = require("express")
 const Task = require("../models/Task")
 
 module.exports = class TaskController {
@@ -65,5 +66,14 @@ module.exports = class TaskController {
         const tasks = await Task.findAll({raw: true})
 
         res.render('tasks/all', {tasks})
+    }
+
+    static async showExactTask(req, res){
+
+        const id = req.params.id
+
+        const task = await Task.findOne({where: {id: id}, raw: true})
+
+        res.render('tasks/task', {task})
     }
 }

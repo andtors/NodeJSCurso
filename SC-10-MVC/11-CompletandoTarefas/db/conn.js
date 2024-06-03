@@ -10,7 +10,7 @@ try {
     sequelize.authenticate()
     console.log('Conectamos ao MySQL!')
 } catch (error) {
-    console.log(`Não foi possivel conectart: ${error}` )
+    console.log(`Não foi possivel conectar: ${error}` )
 }
 
 module.exports = sequelize
