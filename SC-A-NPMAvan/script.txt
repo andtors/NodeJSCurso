@@ -1,0 +1,64 @@
+#Alterar dados no package JSON:
+- Alterando nome
+npm config set init author-name André
+
+- Alterando e-mail
+npm config set init author-email andre.torres@gmail.com
+
+#Consultar informações do package
+npm get
+
+#Deletar chave
+npm config delete init-author-name
+
+#Instalar de forma global
+npm i express -g
+
+#Remover pacote global
+npm remove express -g
+
+#Consultar pacotes instalados
+npm list --depth-0 (principais)
+npm list -g (globais)
+
+#Comparar pasta node com package e apagar
+npm prune
+
+#Procurando modulos
+npm search <pesquisa>
+
+#Pesquisar por atualizações no pacote
+npm outdated 
+
+#Atualizar modulos
+npm update
+
+#Verificar cache npm
+npm cache verify 
+
+#Limpar cache
+npm cache clean --force
+
+#Consultar vulnerabilidade
+npm audit
+
+#Corrigir vulnerabilidade
+npm audit fix (--force se necessario)
+
+#Consultar pacotes
+npm view <pacote>
+ 
+#Consultar documentação
+npm docs <pacote>
+
+#Homepage do pacote
+npm home <pacote>
+
+#Remover duplicidade nas dependencias
+npm dedupe
+
+#Salvando pacote fora da dependencias
+npm i <pacote> --no-save
+
+#Consultando scripts
+npm run

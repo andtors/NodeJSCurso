@@ -51,7 +51,7 @@ module.exports = class PetController {
         }
 
         // get pet owner
-        const token = getToken(req)
+        const token =  getToken(req)
         const user = await getUserByToken(token)
 
         const pet = new Pet({
@@ -102,7 +102,7 @@ module.exports = class PetController {
     static async getAllUserPets(req, res) {
 
         // get user from token
-        const token = getToken(req)
+        const token =  getToken(req)
         const user = await getUserByToken(token)
 
         const pets = await Pet.find({ 'user._id': user._id }).sort('-createdAt')
@@ -114,7 +114,7 @@ module.exports = class PetController {
 
     static async getAllUserAdoptions(req, res) {
         // get user from token
-        const token = getToken(req)
+        const token =  getToken(req)
         const user = await getUserByToken(token)
 
         const pets = await Pet.find({ 'adopter._id': user._id }).sort('-createdAt')
@@ -170,7 +170,7 @@ module.exports = class PetController {
         }
 
         // check if logged in user registered the pet
-        const token = getToken(req)
+        const token =  getToken(req)
         const user = await getUserByToken(token)
 
         if (pet.user._id.toString() !== user._id.toString()) {
@@ -214,7 +214,7 @@ module.exports = class PetController {
         }
 
         // check if logged in user registered the pet
-        const token = getToken(req)
+        const token =  getToken(req)
         const user = await getUserByToken(token)
 
         if (pet.user._id.toString() !== user._id.toString()) {
@@ -289,7 +289,7 @@ module.exports = class PetController {
         }
         
         // check if user registered the pet
-        const token = getToken(req)
+        const token =  getToken(req)
         const user = await getUserByToken(token)
 
         if (pet.user._id.equals(user._id)) {
@@ -338,7 +338,7 @@ module.exports = class PetController {
         }
         
         // check if user registered the pet
-        const token = getToken(req)
+        const token =  getToken(req)
         const user = await getUserByToken(token)
 
         if (pet.user._id.toString() !== user._id.toString()) {
